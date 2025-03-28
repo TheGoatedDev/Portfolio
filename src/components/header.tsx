@@ -44,18 +44,13 @@ export function Header() {
 	const socialLinks = [
 		{
 			name: "GitHub",
-			href: "https://github.com",
+			href: "https://github.com/TheGoatedDev",
 			icon: <Github className="h-5 w-5" />,
 		},
 		{
 			name: "LinkedIn",
-			href: "https://linkedin.com",
+			href: "https://www.linkedin.com/in/thomas-nearlunar/",
 			icon: <Linkedin className="h-5 w-5" />,
-		},
-		{
-			name: "Twitter",
-			href: "https://twitter.com",
-			icon: <Twitter className="h-5 w-5" />,
 		},
 	];
 
@@ -74,7 +69,7 @@ export function Header() {
 					className="text-xl font-bold tracking-tighter transition-colors hover:text-primary"
 					onClick={closeMenu}
 				>
-					<span className="text-primary">Dev</span>Portfolio
+					<span className="text-primary">Thomas</span> Burridge
 				</Link>
 
 				{/* Desktop Navigation */}
