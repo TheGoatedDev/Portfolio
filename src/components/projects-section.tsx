@@ -8,83 +8,42 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, Github, Link } from "lucide-react";
 import { useMemo, useState } from "react";
 
+const Category = {
+	fullstack: "Full Stack",
+	frontend: "Frontend",
+	backend: "Backend",
+
+	devops: "DevOps",
+} as const;
+
 type Project = {
-	id: number;
 	title: string;
 	description: string;
 	image: string;
 	tags: string[];
-	category: string;
-	liveUrl: string;
-	githubUrl: string;
+	category: keyof typeof Category;
+	liveUrl?: string;
+	githubUrl?: string;
 };
 
 const projects: Project[] = [
 	{
-		id: 1,
-		title: "E-Commerce Platform",
+		title: "Personal K8s Cluster",
 		description:
-			"A full-featured online store with cart functionality, user authentication, and payment processing.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["React", "Node.js", "MongoDB", "Stripe"],
+			"A personal K8s cluster running on a Hetzner. It is used to run my personal projects and services.",
+		image: "/projects/k8s.png?height=600&width=800",
+		tags: ["Kubernetes", "Hetzner", "Docker", "HAProxy"],
+		category: "devops",
+	},
+	{
+		title: "GitRuley",
+		description:
+			"A tool to help you mass manage your GitHub rules. It is a web application that allows you to create, edit, and delete GitHub rules. With no Database, meaning it is completely free to use.",
+		image: "/projects/gitruley.png?height=600&width=800",
+		tags: ["React", "Node.js", "Next.js", "Tailwind CSS"],
 		category: "fullstack",
-		liveUrl: "#",
-		githubUrl: "#",
-	},
-	{
-		id: 2,
-		title: "Task Management App",
-		description:
-			"A productivity application for organizing tasks with drag-and-drop functionality and team collaboration features.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["React", "Firebase", "Tailwind CSS"],
-		category: "frontend",
-		liveUrl: "#",
-		githubUrl: "#",
-	},
-	{
-		id: 3,
-		title: "Real-time Chat Application",
-		description:
-			"A messaging platform with real-time updates, user presence indicators, and file sharing capabilities.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["React", "Socket.io", "Express", "MongoDB"],
-		category: "fullstack",
-		liveUrl: "#",
-		githubUrl: "#",
-	},
-	{
-		id: 4,
-		title: "Content Management System",
-		description:
-			"A custom CMS for managing digital content with role-based access control and a WYSIWYG editor.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["Next.js", "GraphQL", "PostgreSQL"],
-		category: "fullstack",
-		liveUrl: "#",
-		githubUrl: "#",
-	},
-	{
-		id: 5,
-		title: "Weather Dashboard",
-		description:
-			"A weather visualization tool that displays current conditions and forecasts using external API data.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["JavaScript", "Chart.js", "Weather API"],
-		category: "frontend",
-		liveUrl: "#",
-		githubUrl: "#",
-	},
-	{
-		id: 6,
-		title: "RESTful API Service",
-		description:
-			"A backend service providing data endpoints with authentication, rate limiting, and comprehensive documentation.",
-		image: "/placeholder.svg?height=600&width=800",
-		tags: ["Node.js", "Express", "MongoDB", "Swagger"],
-		category: "backend",
-		liveUrl: "#",
-		githubUrl: "#",
+		liveUrl: "https://gitruley.thegoated.dev/",
+		githubUrl: "https://github.com/TheGoatedDev/gitruley",
 	},
 ];
 
@@ -135,11 +94,13 @@ export function ProjectsSection() {
 					className="w-full max-w-3xl mx-auto mb-12"
 					onValueChange={setActiveTab}
 				>
-					<TabsList className="grid grid-cols-4 w-full">
+					<TabsList className="w-full">
 						<TabsTrigger value="all">All</TabsTrigger>
-						<TabsTrigger value="frontend">Frontend</TabsTrigger>
-						<TabsTrigger value="backend">Backend</TabsTrigger>
-						<TabsTrigger value="fullstack">Full Stack</TabsTrigger>
+						{Object.entries(Category).map(([key, value]) => (
+							<TabsTrigger key={key} value={key}>
+								{value}
+							</TabsTrigger>
+						))}
 					</TabsList>
 				</Tabs>
 
@@ -152,10 +113,16 @@ export function ProjectsSection() {
 					viewport={{ margin: "-100px" }}
 				>
 					{filteredProjects.map((project) => (
-						<motion.div key={project.id} variants={itemVariants}>
+						<motion.div key={project.title} variants={itemVariants}>
 							<ProjectCard project={project} />
 						</motion.div>
 					))}
+
+					{filteredProjects.length === 0 && (
+						<div className="w-full col-span-full flex items-center justify-center text-center text-muted-foreground">
+							No projects found
+						</div>
+					)}
 				</motion.div>
 
 				<div className="text-center mt-16">
@@ -177,7 +144,7 @@ export function ProjectsSection() {
 
 function ProjectCard({ project }: { project: Project }) {
 	return (
-		<Card className="overflow-hidden group h-full flex flex-col">
+		<Card className="overflow-hidden group h-full flex flex-col py-0">
 			<div className="relative overflow-hidden aspect-video">
 				<img
 					src={project.image || "/placeholder.svg"}
@@ -185,7 +152,7 @@ function ProjectCard({ project }: { project: Project }) {
 					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
 			</div>
-			<CardContent className="flex-1 flex flex-col p-6">
+			<CardContent className="flex-1 flex flex-col p-4">
 				<div className="flex-1">
 					<h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
 						{project.title}
@@ -199,24 +166,34 @@ function ProjectCard({ project }: { project: Project }) {
 						))}
 					</div>
 				</div>
-				<div className="flex gap-4 mt-auto pt-4 border-t">
-					<Button variant="ghost" size="sm" asChild>
-						<a
-							href={project.githubUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<Github className="h-4 w-4 mr-2" />
-							Code
-						</a>
-					</Button>
-					<Button variant="ghost" size="sm" asChild>
-						<a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-							<ExternalLink className="h-4 w-4 mr-2" />
-							Live Demo
-						</a>
-					</Button>
-				</div>
+				{(project.githubUrl || project.liveUrl) && (
+					<div className="flex gap-4 mt-auto pt-4 border-t">
+						{project.githubUrl && (
+							<Button variant="ghost" size="sm" asChild>
+								<a
+									href={project.githubUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<Github className="h-4 w-4 mr-2" />
+									Code
+								</a>
+							</Button>
+						)}
+						{project.liveUrl && (
+							<Button variant="ghost" size="sm" asChild>
+								<a
+									href={project.liveUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<ExternalLink className="h-4 w-4 mr-2" />
+									Live Demo
+								</a>
+							</Button>
+						)}
+					</div>
+				)}
 			</CardContent>
 		</Card>
 	);
