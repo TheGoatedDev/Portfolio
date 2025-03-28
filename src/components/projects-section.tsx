@@ -42,8 +42,17 @@ const projects: Project[] = [
 		image: "/projects/gitruley.png?height=600&width=800",
 		tags: ["React", "Node.js", "Next.js", "Tailwind CSS"],
 		category: "fullstack",
-		liveUrl: "https://gitruley.thegoated.dev/",
 		githubUrl: "https://github.com/TheGoatedDev/gitruley",
+		liveUrl: "https://gitruley.thegoated.dev/",
+	},
+	{
+		title: "EnterpriseNest",
+		description:
+			"Enterprise-Nest is an enterprise-level API framework built on top of NestJS. It is designed with scalability, best practices, and robustness in mind. The architecture of the framework is based on Domain-Driven Design (DDD), Onion Architecture, Clean Architecture, and Hexagonal Architecture.",
+		image: "/projects/enterprisenest.svg?height=600&width=800",
+		tags: ["NestJS", "TypeScript", "Docker"],
+		category: "backend",
+		githubUrl: "https://github.com/TheGoatedDev/EnterpriseNest",
 	},
 ];
 
