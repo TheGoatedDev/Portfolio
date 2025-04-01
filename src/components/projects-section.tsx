@@ -32,15 +32,31 @@ const projects: Project[] = [
 		description:
 			"A personal K8s cluster running on a Hetzner. It is used to run my personal projects and services.",
 		image: "/projects/k8s.png?height=600&width=800",
-		tags: ["Kubernetes", "Hetzner", "Docker", "HAProxy"],
+		tags: ["Personal", "Kubernetes", "Hetzner", "Docker", "HAProxy"],
 		category: "devops",
+	},
+	{
+		title: "All-The-Infra",
+		description:
+			"A comprehensive development infrastructure setup using Docker Compose, providing databases, message queues, mail testing, and monitoring solutions all pre-configured for immediate use.",
+		image: "/docker.svg?height=600&width=800",
+		tags: [
+			"Docker",
+			"Docker Compose",
+			"DevOps",
+			"Infrastructure",
+			"Monitoring",
+			"Databases",
+		],
+		category: "devops",
+		githubUrl: "https://github.com/TheGoatedDev/All-The-Infra",
 	},
 	{
 		title: "GitRuley",
 		description:
 			"A tool to help you mass manage your GitHub rules. It is a web application that allows you to create, edit, and delete GitHub rules. With no Database, meaning it is completely free to use.",
 		image: "/projects/gitruley.png?height=600&width=800",
-		tags: ["React", "Node.js", "Next.js", "Tailwind CSS"],
+		tags: ["Personal", "React", "Node.js", "Next.js", "Tailwind CSS"],
 		category: "fullstack",
 		githubUrl: "https://github.com/TheGoatedDev/gitruley",
 		liveUrl: "https://gitruley.thegoated.dev/",
@@ -50,9 +66,58 @@ const projects: Project[] = [
 		description:
 			"Enterprise-Nest is an enterprise-level API framework built on top of NestJS. It is designed with scalability, best practices, and robustness in mind. The architecture of the framework is based on Domain-Driven Design (DDD), Onion Architecture, Clean Architecture, and Hexagonal Architecture.",
 		image: "/projects/enterprisenest.svg?height=600&width=800",
-		tags: ["NestJS", "TypeScript", "Docker"],
+		tags: ["Personal", "NestJS", "TypeScript", "Docker"],
 		category: "backend",
 		githubUrl: "https://github.com/TheGoatedDev/EnterpriseNest",
+	},
+	{
+		title: "Data Warehouse",
+		description:
+			"A low-cost cloud file storage solution using Amazon S3, operating independently of a database. Provides secure, scalable storage without the overhead of maintaining database systems.",
+		image: "/projects/datawarehouse.jpeg?height=600&width=800",
+		tags: [
+			"AWS",
+			"Next.js",
+			"TypeScript",
+			"Amazon S3",
+			"React Query",
+			"Mantine UI",
+		],
+		category: "fullstack",
+		githubUrl: "https://github.com/TheGoatedDev/Data-Warehouse",
+	},
+	{
+		title: "PowerPortal",
+		description:
+			"An IoT portal for monitoring and controlling Solar-Diesel Hybrid Generators in real-time. Features data ingress using AWS IoT Core, real-time monitoring, and a firmware updater.",
+		image: "/projects/powerportal.jpeg?height=600&width=800",
+		tags: [
+			"Next.js",
+			"AWS",
+			"IoT",
+			"TypeScript",
+			"TRPC",
+			"Express",
+			"Socket.IO",
+			"DynamoDB",
+		],
+		category: "fullstack",
+	},
+	{
+		title: "Secure IoT Device Management VPN",
+		description:
+			"Implemented AWS Site-to-Site VPN to establish secure connections between internal networks and external Cellular Network providers for IoT device management.",
+		image: "/projects/awsvpnsitetosite.png?height=600&width=800",
+		tags: ["AWS VPN", "IoT", "Network Security", "Solution Architecture"],
+		category: "devops",
+	},
+	{
+		title: "Lighting Portal",
+		description:
+			"Refactored a web application for solar lighting tower management with real-time monitoring, control features, and optimized energy consumption tracking.",
+		image: "/projects/lightingportal.png?height=600&width=800",
+		tags: ["AWS", "Node.js", "Express", "Socket.IO", "DynamoDB", "IoT"],
+		category: "fullstack",
 	},
 ];
 
