@@ -2,6 +2,7 @@ import type React from "react";
 import "@/app/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,12 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			]
+			<Script
+				defer
+				src="https://umami.thegoated.dev/script.js"
+				data-website-id="d58bbedb-5107-4961-8202-5d64643f6745"
+			/>
 			<body className={inter.className}>
 				<ThemeProvider
 					attribute="class"
