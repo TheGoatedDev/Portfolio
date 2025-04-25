@@ -1,8 +1,8 @@
-import type React from "react";
 import "@/app/globals.css";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import type React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,6 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			]
 			<Script
 				defer
 				src="https://umami.thegoated.dev/script.js"

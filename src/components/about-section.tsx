@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, Download, GraduationCap } from "lucide-react";
+import { Briefcase, Calendar, GraduationCap } from "lucide-react";
 import type React from "react";
 
 export function AboutSection() {
@@ -205,13 +204,6 @@ export function AboutSection() {
 									</p>
 								</TabsContent>
 							</Tabs>
-						</motion.div>
-
-						<motion.div variants={itemVariants}>
-							<Button className="group">
-								Download Resume
-								<Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-							</Button>
 						</motion.div>
 					</motion.div>
 				</div>

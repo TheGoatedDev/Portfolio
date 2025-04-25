@@ -4,8 +4,9 @@ import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import type { COBEOptions } from "cobe";
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Sparkles, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { GLOBE_CONFIG, Globe } from "./magicui/globe";
 
@@ -120,7 +121,10 @@ export function HeroSection() {
 						initial="hidden"
 						animate="visible"
 					>
-						<motion.div variants={itemVariants} className="space-y-6">
+						<motion.div
+							variants={itemVariants}
+							className="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start"
+						>
 							<div className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium bg-background">
 								<div className="relative  h-2 w-2 mr-2">
 									<span className="flex h-2 w-2 rounded-full bg-primary mr-2 absolute" />
@@ -145,20 +149,25 @@ export function HeroSection() {
 								design with robust functionality.
 							</p>
 
-							<div className="flex flex-col sm:flex-row gap-4 pt-4">
-								<Button size="lg" className="group">
-									View My Work
-									<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+							<div className="flex flex-row gap-4 pt-4">
+								<Button size="lg" className="group" asChild>
+									<Link href="#projects">
+										View My Work
+										<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+									</Link>
 								</Button>
-								<Button size="lg" variant="outline">
-									Contact Me
+								<Button size="lg" variant="outline" asChild>
+									<Link href="#contact">
+										Contact Me
+										<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+									</Link>
 								</Button>
 							</div>
 						</motion.div>
 
 						<motion.div
 							variants={itemVariants}
-							className="relative hidden lg:block"
+							className="absolute lg:relative"
 						>
 							<div className="relative h-[450px] w-full">
 								<Globe config={globeConfig} />
@@ -168,7 +177,7 @@ export function HeroSection() {
 				</div>
 			</div>
 
-			<div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
+			<div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
 				<motion.div
 					initial={{ y: 0 }}
 					animate={{ y: [0, 10, 0] }}
