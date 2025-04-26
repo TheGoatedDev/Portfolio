@@ -50,3 +50,37 @@ export async function generateStaticParams() {
 	const posts = await getAllPosts();
 	return posts.map((post) => ({ slug: post.id }));
 }
+
+export async function generateMetadata({
+	params,
+}: { params: { slug: string } }) {
+	const post = await getPostById(params.slug);
+	if (!post) return {};
+	const description =
+		post.Content?.replace(/[#_*`>\-\[\]!\(\)]/g, "").slice(0, 160) || "";
+	const images = post.Banner_Image
+		? [
+				{
+					url: `https://directus.thegoated.dev/assets/${post.Banner_Image}`,
+					alt: post.Title,
+				},
+			]
+		: [];
+	return {
+		title: post.Title,
+		description,
+		openGraph: {
+			title: post.Title,
+			description,
+			images,
+			type: "article",
+			url: `https://thegoated.dev/blog/${post.id}`,
+		},
+		twitter: {
+			card: images.length ? "summary_large_image" : "summary",
+			title: post.Title,
+			description,
+			images,
+		},
+	};
+}
