@@ -16,7 +16,7 @@ export default async function BlogPage() {
 				<div className="grid gap-8 max-w-2xl mx-auto">
 					{posts.length ? (
 						posts.map((post) => (
-							<Card key={post.id}>
+							<Card key={post.id} className="pt-0">
 								{post.Banner_Image && (
 									<img
 										src={`https://directus.thegoated.dev/assets/${post.Banner_Image}`}
