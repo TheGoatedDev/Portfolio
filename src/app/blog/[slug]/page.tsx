@@ -6,12 +6,12 @@ import { notFound } from "next/navigation";
 import { getAllPosts } from "../_actions/getAllPosts";
 import { getPostBySlug as getPostById } from "../_actions/getPostBySlug";
 
-interface PageProps {
+export default async function BlogPostPage({
+	params,
+}: {
 	params: Promise<{ slug: string }>;
-}
-
-export default async function BlogPostPage(props: PageProps) {
-	const { slug } = await props.params;
+}) {
+	const { slug } = await params;
 
 	const post = await getPostById(slug);
 	if (!post) return notFound();
@@ -53,8 +53,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
 	params,
-}: { params: { slug: string } }) {
-	const post = await getPostById(params.slug);
+}: { params: Promise<{ slug: string }> }) {
+	const post = await getPostById((await params).slug);
 	if (!post) return {};
 	const description =
 		post.Content?.replace(/[#_*`>\-\[\]!\(\)]/g, "").slice(0, 160) || "";

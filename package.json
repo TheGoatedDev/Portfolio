@@ -6,7 +6,8 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"clean": "rm -rf .next && rm -rf node_modules"
 	},
 	"dependencies": {
 		"@directus/sdk": "^19.1.0",
@@ -19,7 +20,7 @@
 		"framer-motion": "^12.6.2",
 		"lucide-react": "^0.484.0",
 		"motion": "^12.6.2",
-		"next": "15.2.4",
+		"next": "15.3.1",
 		"next-themes": "^0.4.6",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
@@ -39,9 +40,6 @@
 		"typescript": "^5"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@biomejs/biome",
-			"sharp"
-		]
+		"onlyBuiltDependencies": ["@biomejs/biome", "sharp"]
 	}
 }
