@@ -13,7 +13,7 @@ export default async function BlogPage() {
 			<Header />
 			<main className="container min-h-screen pt-24 pb-16">
 				<h1 className="text-4xl font-bold mb-10">Blog</h1>
-				<div className="grid gap-8 max-w-2xl mx-auto">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
 					{posts.length ? (
 						posts.map((post) => (
 							<Card key={post.id} className="pt-0">
