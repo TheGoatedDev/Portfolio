@@ -28,6 +28,15 @@ type Project = {
 
 const projects: Project[] = [
 	{
+		title: "RescueCore",
+		description:
+			"RescueCore is a comprehensive animal shelter management system designed to help shelters, rescue organizations, and animal care facilities manage their animals, volunteers, fosters, and adopters with modern tools and intuitive workflows.",
+		tags: ["Docker", "NextJS", "TRPC", "MySQL", "S3"],
+		category: "fullstack",
+		image: "/projects/rescuecore.png?height=600&width=800",
+		liveUrl: "https://rescuecore.thegoated.dev/",
+	},
+	{
 		title: "Personal K8s Cluster",
 		description:
 			"A personal K8s cluster running on a Hetzner. It is used to run my personal projects and services.",
