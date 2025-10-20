@@ -28,6 +28,15 @@ type Project = {
 
 const projects: Project[] = [
 	{
+		title: "BitProxy",
+		description: "A API and admin dashboard to handle Bitcoin payment processing. It's built for developers who need to integrate Bitcoin payments into their applications without managing the payment infrastructure themselves.",
+		image: "/projects/bitproxy.png?height=600&width=800",
+		tags: ["NextJS", "TypeScript", "React", "Node.js", "Crypto", "Web3", "Bitcoin"],
+		category: "fullstack",
+		// githubUrl: "https://github.com/TheGoatedDev/BitProxy",
+		// liveUrl: "https://bitproxy.thegoated.dev/",
+	}
+	{
 		title: "RescueCore",
 		description:
 			"RescueCore is a comprehensive animal shelter management system designed to help shelters, rescue organizations, and animal care facilities manage their animals, volunteers, fosters, and adopters with modern tools and intuitive workflows.",
