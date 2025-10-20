@@ -29,13 +29,14 @@ type Project = {
 const projects: Project[] = [
 	{
 		title: "BitProxy",
-		description: "A API and admin dashboard to handle Bitcoin payment processing. It's built for developers who need to integrate Bitcoin payments into their applications without managing the payment infrastructure themselves.",
+		description:
+			"A API and admin dashboard to handle Bitcoin payment processing. It's built for developers who need to integrate Bitcoin payments into their applications without managing the payment infrastructure themselves.",
 		image: "/projects/bitproxy.png?height=600&width=800",
-		tags: ["NextJS", "TypeScript", "React", "Node.js", "Crypto", "Web3", "Bitcoin"],
+		tags: ["NextJS", "TypeScript", "TRPC", "MySQL", "Crypto", "Bitcoin"],
 		category: "fullstack",
 		// githubUrl: "https://github.com/TheGoatedDev/BitProxy",
 		// liveUrl: "https://bitproxy.thegoated.dev/",
-	}
+	},
 	{
 		title: "RescueCore",
 		description:
