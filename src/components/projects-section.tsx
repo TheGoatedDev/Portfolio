@@ -42,7 +42,7 @@ const projects: Project[] = [
 			"Cryptography",
 		],
 		category: "fullstack",
-		liveUrl: "https://mirrorquay.come/",
+		liveUrl: "https://mirrorquay.com/",
 	},
 	{
 		title: "BitProxy",
