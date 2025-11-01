@@ -138,6 +138,7 @@ const projects: Project[] = [
 			"DynamoDB",
 		],
 		category: "fullstack",
+		liveUrl: "https://power2.prolectric.co.uk",
 	},
 	{
 		title: "Secure IoT Device Management VPN",
@@ -154,6 +155,7 @@ const projects: Project[] = [
 		image: "/projects/lightingportal.png?height=600&width=800",
 		tags: ["AWS", "Node.js", "Express", "Socket.IO", "DynamoDB", "IoT"],
 		category: "fullstack",
+		liveUrl: "https://lighting.prolectric.co.uk",
 	},
 ];
 
