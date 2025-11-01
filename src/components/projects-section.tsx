@@ -28,6 +28,23 @@ type Project = {
 
 const projects: Project[] = [
 	{
+		title: "MirrorQuay",
+		description:
+			"A Docker registry mirroring service. It is a simple and easy to use Docker registry mirroring service that allows you to mirror any Docker registry to any other Docker registry.",
+		image: "/projects/mirrorquay.png?height=600&width=800",
+		tags: [
+			"NextJS",
+			"TypeScript",
+			"TRPC",
+			"MySQL",
+			"Docker",
+			"TailwindCSS",
+			"Cryptography",
+		],
+		category: "fullstack",
+		liveUrl: "https://mirrorquay.come/",
+	},
+	{
 		title: "BitProxy",
 		description:
 			"A API and admin dashboard to handle Bitcoin payment processing. It's built for developers who need to integrate Bitcoin payments into their applications without managing the payment infrastructure themselves.",
