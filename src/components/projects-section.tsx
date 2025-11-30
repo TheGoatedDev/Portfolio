@@ -28,6 +28,23 @@ type Project = {
 
 const projects: Project[] = [
 	{
+		title: "SMB Utils",
+		description:
+			"A financial management platform for SMBs providing real-time cash runway tracking. Integrates with QuickBooks, Xero, Stripe, and more to automatically calculate runway and send proactive alerts before running out of cash.",
+		image: "/projects/smbutils.png?height=600&width=800",
+		tags: [
+			"NextJS",
+			"TypeScript",
+			"SaaS",
+			"FinTech",
+			"Integrations",
+			"TailwindCSS",
+		],
+		category: "fullstack",
+		liveUrl: "https://smbutils.thegoated.dev/",
+		githubUrl: "https://github.com/TheGoatedDev/SMB-Utils",
+	},
+	{
 		title: "MirrorQuay",
 		description:
 			"A Docker registry mirroring service. It is a simple and easy to use Docker registry mirroring service that allows you to mirror any Docker registry to any other Docker registry.",
