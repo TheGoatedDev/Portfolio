@@ -230,7 +230,7 @@ function TechGrid() {
 					<div className="h-20 w-20 relative mb-3">
 						<img
 							src={tech.icon || "/placeholder.svg"}
-							alt={tech.name}
+							alt={`${tech.name} technology logo`}
 							className="w-full h-full object-contain"
 						/>
 					</div>

@@ -25,7 +25,7 @@ export default async function BlogPostPage({
 						{post.Banner_Image && (
 							<img
 								src={`https://directus.thegoated.dev/assets/${post.Banner_Image}`}
-								alt={post.Title}
+								alt={`Banner image for ${post.Title}`}
 								className="w-full h-64 object-cover rounded-t-xl"
 							/>
 						)}

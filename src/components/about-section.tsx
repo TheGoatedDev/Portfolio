@@ -50,7 +50,7 @@ export function AboutSection() {
 						<div className="relative h-[450px] w-full rounded-lg overflow-hidden">
 							<img
 								src="/profile.jpeg"
-								alt="Thomas Burridge Profile"
+								alt="Thomas Burridge, professional software engineer and technology leader"
 								className="w-full h-full object-cover"
 							/>
 						</div>

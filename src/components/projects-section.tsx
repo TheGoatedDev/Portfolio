@@ -277,7 +277,7 @@ function ProjectCard({ project }: { project: Project }) {
 			<div className="relative overflow-hidden aspect-video">
 				<img
 					src={project.image || "/placeholder.svg"}
-					alt={project.title}
+					alt={`Screenshot of ${project.title} project showing ${project.description.slice(0, 50).toLowerCase()}`}
 					className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
 			</div>
