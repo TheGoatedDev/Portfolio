@@ -31,7 +31,8 @@ export default async function BlogPostPage({
 						)}
 
 						<CardContent>
-							<div className="text-muted-foreground text-xs">
+							<h1 className="text-3xl font-bold mb-2 mt-6">{post.Title}</h1>
+							<div className="text-muted-foreground text-xs mb-6">
 								{new Date(post.date_created).toLocaleDateString()}
 							</div>
 							<Markdown className="prose prose-neutral dark:prose-invert max-w-none">
