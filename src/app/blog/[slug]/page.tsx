@@ -5,6 +5,7 @@ import { Markdown } from "@/components/ui/markdown";
 import { notFound } from "next/navigation";
 import { getAllPosts } from "../_actions/getAllPosts";
 import { getPostBySlug as getPostById } from "../_actions/getPostBySlug";
+import type { WithContext, Article } from "schema-dts";
 
 export default async function BlogPostPage({
 	params,
@@ -16,8 +17,39 @@ export default async function BlogPostPage({
 	const post = await getPostById(slug);
 	if (!post) return notFound();
 
+	const articleSchema: WithContext<Article> = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		headline: post.Title,
+		description: post.Content?.replace(/[#_*`>\-\[\]!\(\)]/g, "").slice(0, 160) || "",
+		author: {
+			"@type": "Person",
+			name: "Thomas Burridge",
+			url: "https://thegoated.dev",
+		},
+		datePublished: post.date_created,
+		dateModified: post.date_updated || post.date_created,
+		image: post.Banner_Image
+			? `https://directus.thegoated.dev/assets/${post.Banner_Image}`
+			: undefined,
+		publisher: {
+			"@type": "Person",
+			name: "Thomas Burridge",
+		},
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": `https://thegoated.dev/blog/${slug}`,
+		},
+	};
+
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+				}}
+			/>
 			<Header />
 			<main className="container min-h-screen pt-24 pb-16 flex flex-col items-center">
 				<div className="max-w-2xl w-full">
@@ -70,6 +102,9 @@ export async function generateMetadata({
 	return {
 		title: post.Title,
 		description,
+		alternates: {
+			canonical: `/blog/${(await params).slug}`,
+		},
 		openGraph: {
 			title: post.Title,
 			description,

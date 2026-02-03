@@ -6,7 +6,7 @@ export async function getPostBySlug(id: string): Promise<Post | null> {
 	const posts = await directus.request(
 		readItems("PortfolioBlog", {
 			filter: { id: { _eq: id } },
-			fields: ["id", "Title", "Content", "date_created", "Banner_Image"],
+			fields: ["id", "Title", "Content", "date_created", "date_updated", "Banner_Image"],
 			limit: 1,
 		}),
 	);
