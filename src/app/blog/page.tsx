@@ -4,6 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Markdown } from "@/components/ui/markdown";
 import Link from "next/link";
 import { getAllPosts } from "./_actions/getAllPosts";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Blog",
+	description: "Technical articles, tutorials, and insights on software development, React, Next.js, and web technologies by Thomas Burridge.",
+	alternates: {
+		canonical: "/blog",
+	},
+};
 
 export default async function BlogPage() {
 	const posts = await getAllPosts();
