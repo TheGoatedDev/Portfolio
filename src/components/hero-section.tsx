@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import type { COBEOptions } from "cobe";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -149,7 +149,7 @@ export function HeroSection() {
 								design with robust functionality.
 							</p>
 
-							<div className="flex flex-row gap-4 pt-4">
+							<div className="flex flex-row flex-wrap justify-center lg:justify-start gap-4 pt-4">
 								<Button size="lg" className="group" asChild>
 									<Link href="#projects">
 										View My Work
@@ -161,6 +161,12 @@ export function HeroSection() {
 										Contact Me
 										<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
 									</Link>
+								</Button>
+								<Button size="lg" variant="outline" className="group" asChild>
+									<a href="/api/cv/pdf" download>
+										Download CV
+										<Download className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+									</a>
 								</Button>
 							</div>
 						</motion.div>
