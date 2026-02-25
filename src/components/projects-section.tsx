@@ -28,6 +28,41 @@ type Project = {
 
 const projects: Project[] = [
 	{
+		title: "NearIRM",
+		description:
+			"An on-call and incident management tool built for teams. Alerts route through email, Slack, push notifications, or custom webhooks — with retry logic and delivery tracking so nothing gets dropped silently. Multi-tenant from the ground up, with Stripe billing built in.",
+		image: "/projects/nearirm.png?height=600&width=800",
+		tags: [
+			"Next.js",
+			"TypeScript",
+			"tRPC",
+			"MySQL",
+			"Drizzle ORM",
+			"Stripe",
+			"SaaS",
+			"Multi-tenant",
+		],
+		category: "fullstack",
+		liveUrl: "https://irm.nearlunar.com",
+	},
+	{
+		title: "Webdashy",
+		description:
+			"A dashcam that runs entirely in the browser. It uses MediaPipe to detect vehicles through your webcam in real time, with adjustable crop regions and a gallery of captures stored locally — no server required.",
+		image: "/projects/webdashy.png?height=600&width=800",
+		tags: [
+			"React",
+			"TypeScript",
+			"MediaPipe",
+			"Computer Vision",
+			"Vite",
+			"TailwindCSS",
+		],
+		category: "frontend",
+		liveUrl: "https://dashy.thegoated.dev",
+		githubUrl: "https://github.com/TheGoatedDev/Webdashy",
+	},
+	{
 		title: "SMB Utils",
 		description:
 			"A financial management platform for SMBs providing real-time cash runway tracking. Integrates with QuickBooks, Xero, Stripe, and more to automatically calculate runway and send proactive alerts before running out of cash.",
