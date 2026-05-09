@@ -1,41 +1,62 @@
 import "@/app/globals.css";
-import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
-import Script from "next/script";
 import type { Metadata } from "next";
+import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
+import Script from "next/script";
 import type React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+	subsets: ["latin"],
+	variable: "--font-geist-sans",
+	display: "swap",
+});
+
+const geistMono = Geist_Mono({
+	subsets: ["latin"],
+	variable: "--font-geist-mono",
+	display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+	subsets: ["latin"],
+	variable: "--font-source-serif",
+	weight: ["300", "400", "500", "600"],
+	style: ["normal", "italic"],
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://thegoated.dev"),
 	title: {
 		template: "%s | Thomas Burridge",
-		default: "Thomas Burridge | Developer Portfolio",
+		default: "Thomas Burridge — Software engineer, available for freelance",
 	},
-	description: "A showcase of Thomas Burridge's work and skills as a developer",
+	description:
+		"Thomas Burridge builds infrastructure-heavy products: SaaS, IoT, and multi-tenant systems. Selected work, working notes, contact.",
 	keywords: [
-		"software engineer",
-		"full-stack developer",
+		"freelance software engineer",
+		"contract developer",
 		"Next.js",
-		"React",
 		"TypeScript",
-		"portfolio",
+		"DevOps",
+		"SaaS",
+		"IoT",
 	],
 	authors: [{ name: "Thomas Burridge", url: "https://thegoated.dev" }],
 	creator: "Thomas Burridge",
 	openGraph: {
 		type: "website",
-		locale: "en_US",
+		locale: "en_GB",
 		url: "https://thegoated.dev",
 		siteName: "Thomas Burridge",
-		title: "Thomas Burridge | Developer Portfolio",
-		description: "A showcase of Thomas Burridge's work and skills as a developer",
+		title: "Thomas Burridge — Software engineer, available for freelance",
+		description:
+			"Selected work, working notes, contact. Infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Thomas Burridge | Developer Portfolio",
-		description: "A showcase of Thomas Burridge's work and skills as a developer",
+		title: "Thomas Burridge — Software engineer, available for freelance",
+		description:
+			"Selected work, working notes, contact. Infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
 	},
 	robots: {
 		index: true,
@@ -56,21 +77,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en">
 			<Script
 				defer
 				src="https://umami.thegoated.dev/script.js"
 				data-website-id="d58bbedb-5107-4961-8202-5d64643f6745"
 			/>
-			<body className={inter.className}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="light"
-					enableSystem
-					disableTransitionOnChange
-				>
-					{children}
-				</ThemeProvider>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-sans`}
+			>
+				{children}
 			</body>
 		</html>
 	);

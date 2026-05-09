@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import type { Person, WebSite, WithContext } from "schema-dts";
 
 import { AboutSection } from "@/components/about-section";
-import { BasicContactSection } from "@/components/basic-contact-section";
+import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { ProjectsSection } from "@/components/projects-section";
-import { SkillsSection } from "@/components/skills-section";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
 	title: "Home",
 	description:
-		"Thomas Burridge is a full-stack developer specializing in React, Next.js, and TypeScript. View projects, skills, and get in touch.",
+		"Thomas Burridge builds infrastructure-heavy products: SaaS, IoT, multi-tenant systems. Selected work, working notes, contact.",
 	alternates: {
 		canonical: "/",
 	},
@@ -21,26 +22,24 @@ export default function Home() {
 	const personSchema: WithContext<Person> = {
 		"@context": "https://schema.org",
 		"@type": "Person",
-		name: "Thomas Burridge",
+		name: siteConfig.identity.name,
 		jobTitle: "Software Engineer",
 		url: "https://thegoated.dev",
-		sameAs: [
-			"https://github.com/TheGoatedDev",
-			"https://www.linkedin.com/in/thomas-nearlunar/",
-		],
+		email: `mailto:${siteConfig.contact.email}`,
+		sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
 	};
 
 	const websiteSchema: WithContext<WebSite> = {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
-		name: "Thomas Burridge",
+		name: siteConfig.identity.name,
 		url: "https://thegoated.dev",
 		description:
-			"Professional software engineer portfolio showcasing projects, skills, and technical expertise.",
+			"Selected work, working notes, contact. Infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
 	};
 
 	return (
-		<main className="min-h-screen">
+		<>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data with XSS protection
@@ -55,13 +54,15 @@ export default function Home() {
 					__html: JSON.stringify(websiteSchema).replace(/</g, "\\u003c"),
 				}}
 			/>
-			<HeroSection />
-			<ProjectsSection />
-			<SkillsSection />
-			<AboutSection />
-			<BasicContactSection />
-			{/* <ContactSection /> */}
+
+			<Header />
+			<main>
+				<HeroSection />
+				<ProjectsSection />
+				<AboutSection />
+				<ContactSection />
+			</main>
 			<Footer />
-		</main>
+		</>
 	);
 }
