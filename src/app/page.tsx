@@ -10,7 +10,7 @@ import { ProjectsSection } from "@/components/projects-section";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-	title: "Home",
+	title: "Freelance Software Engineer for SaaS, IoT, and Infrastructure",
 	description:
 		"Thomas Burridge builds infrastructure-heavy products: SaaS, IoT, multi-tenant systems. Selected work, working notes, contact.",
 	alternates: {

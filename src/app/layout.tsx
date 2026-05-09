@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 	metadataBase: new URL("https://thegoated.dev"),
 	title: {
 		template: "%s | Thomas Burridge",
-		default: "Thomas Burridge — Software engineer, available for freelance",
+		default: "Thomas Burridge — Freelance Software Engineer",
 	},
 	description:
 		"Thomas Burridge builds infrastructure-heavy products: SaaS, IoT, and multi-tenant systems. Selected work, working notes, contact.",
@@ -48,15 +48,24 @@ export const metadata: Metadata = {
 		locale: "en_GB",
 		url: "https://thegoated.dev",
 		siteName: "Thomas Burridge",
-		title: "Thomas Burridge — Software engineer, available for freelance",
+		title: "Thomas Burridge — Freelance Software Engineer",
 		description:
 			"Selected work, working notes, contact. Infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "Thomas Burridge, freelance software engineer for SaaS, IoT, and infrastructure-heavy products.",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Thomas Burridge — Software engineer, available for freelance",
+		title: "Thomas Burridge — Freelance Software Engineer",
 		description:
 			"Selected work, working notes, contact. Infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
+		images: ["/og-image.png"],
 	},
 	robots: {
 		index: true,
