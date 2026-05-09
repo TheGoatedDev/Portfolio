@@ -11,7 +11,6 @@ const MOVEMENT_DAMPING = 1400;
 export const GLOBE_CONFIG: COBEOptions = {
 	width: 800,
 	height: 800,
-	onRender: () => {},
 	devicePixelRatio: 2,
 	phi: 0,
 	theta: 0.3,
@@ -43,9 +42,9 @@ export function Globe({
 	className?: string;
 	config?: COBEOptions;
 }) {
-	let phi = 0;
-	let width = 0;
 	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const phiRef = useRef(0);
+	const widthRef = useRef(0);
 	const pointerInteracting = useRef<number | null>(null);
 	const pointerInteractionMovement = useRef(0);
 
@@ -72,29 +71,49 @@ export function Globe({
 	};
 
 	useEffect(() => {
+		let animationFrame = 0;
+
 		const onResize = () => {
 			if (canvasRef.current) {
-				width = canvasRef.current.offsetWidth;
+				widthRef.current = canvasRef.current.offsetWidth;
 			}
 		};
 
 		window.addEventListener("resize", onResize);
 		onResize();
 
-		const globe = createGlobe(canvasRef.current!, {
+		const canvas = canvasRef.current;
+		if (!canvas) {
+			return () => {
+				window.removeEventListener("resize", onResize);
+			};
+		}
+
+		const globe = createGlobe(canvas, {
 			...config,
-			width: width * 2,
-			height: width * 2,
-			onRender: (state) => {
-				if (!pointerInteracting.current) phi += 0.005;
-				state.phi = phi + rs.get();
-				state.width = width * 2;
-				state.height = width * 2;
-			},
+			width: widthRef.current * 2,
+			height: widthRef.current * 2,
 		});
 
-		setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+		const render = () => {
+			if (!pointerInteracting.current) phiRef.current += 0.005;
+			globe.update({
+				phi: phiRef.current + rs.get(),
+				width: widthRef.current * 2,
+				height: widthRef.current * 2,
+			});
+			animationFrame = requestAnimationFrame(render);
+		};
+
+		render();
+
+		setTimeout(() => {
+			if (canvasRef.current) {
+				canvasRef.current.style.opacity = "1";
+			}
+		}, 0);
 		return () => {
+			cancelAnimationFrame(animationFrame);
 			globe.destroy();
 			window.removeEventListener("resize", onResize);
 		};

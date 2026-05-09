@@ -1,4 +1,4 @@
-import ReactMarkdown, { Options } from "react-markdown";
+import ReactMarkdown, { type Options } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // You can extend this mapping for more custom components
@@ -38,8 +38,8 @@ const components: Options["components"] = {
 			{...props}
 		/>
 	),
-	img: ({ node, ...props }) => (
-		<img className="rounded max-w-full my-4" {...props} />
+	img: ({ node, alt = "", ...props }) => (
+		<img alt={alt} className="rounded max-w-full my-4" {...props} />
 	),
 };
 

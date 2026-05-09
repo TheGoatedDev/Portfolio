@@ -5,7 +5,9 @@ import { siteConfig } from "@/lib/site-config";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const URL_RE = /https?:\/\//gi;
-const CONTROL_CHAR_RE = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
+const CONTROL_CHAR_RE = new RegExp(
+	"[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f]",
+);
 const MAX_NAME_LENGTH = 120;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 4000;

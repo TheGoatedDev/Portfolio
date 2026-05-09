@@ -21,7 +21,7 @@ const loadAction = async () => {
 };
 
 const stubFetch = (turnstileSuccess = true) => {
-	const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+	const fetchMock = vi.fn(async (input: RequestInfo | URL, _init?: RequestInit) => {
 		const url = String(input);
 
 		if (url.includes("challenges.cloudflare.com/turnstile")) {
@@ -139,7 +139,10 @@ describe("sendContactMessage", () => {
 		});
 		expect(fetchMock).toHaveBeenCalledTimes(2);
 		expect(fetchMock.mock.calls[1]?.[0]).toBe("https://api.resend.com/emails");
-		expect(JSON.parse(String(fetchMock.mock.calls[1]?.[1]?.body))).toMatchObject({
+		const resendRequest = fetchMock.mock.calls[1]?.[1] as
+			| RequestInit
+			| undefined;
+		expect(JSON.parse(String(resendRequest?.body))).toMatchObject({
 			reply_to: validFields.email,
 			subject: `New message from ${validFields.name} via portfolio`,
 		});
