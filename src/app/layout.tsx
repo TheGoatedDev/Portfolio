@@ -96,7 +96,10 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} font-sans`}
 			>
 				{children}
-			</body>
+			{/* impeccable-live-start */}
+<script src="http://localhost:8400/live.js"></script>
+{/* impeccable-live-end */}
+</body>
 		</html>
 	);
 }

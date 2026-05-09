@@ -42,14 +42,22 @@ export function HeroSection() {
 function AvailabilityPill({ available }: { available: boolean }) {
 	return (
 		<div className="inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-			<span
-				aria-hidden="true"
-				className={
-					available
-						? "h-1.5 w-1.5 rounded-full bg-primary"
-						: "h-1.5 w-1.5 rounded-full bg-muted-foreground/60"
-				}
-			/>
+			<span className="relative inline-flex h-1.5 w-1.5 items-center justify-center text-foreground">
+				{available && (
+					<span
+						aria-hidden="true"
+						className="availability-ping absolute inset-0 rounded-full bg-foreground"
+					/>
+				)}
+				<span
+					aria-hidden="true"
+					className={
+						available
+							? "relative h-1.5 w-1.5 rounded-full bg-foreground"
+							: "relative h-1.5 w-1.5 rounded-full bg-muted-foreground/60"
+					}
+				/>
+			</span>
 			<span>{available ? "Available for new work" : "Currently full"}</span>
 		</div>
 	);
