@@ -23,7 +23,7 @@ export function Header() {
 	}, [isOpen]);
 
 	return (
-		<header className="sticky top-0 z-40 bg-background">
+		<header className="sticky top-0 z-40 bg-background/0 backdrop-blur-sm">
 			<div className="editorial-shell flex h-16 items-center justify-between">
 				<Link
 					href="/"
