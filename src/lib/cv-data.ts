@@ -70,7 +70,9 @@ const CV_TEMPLATE: CvData = {
 			endDate: new Date("2026-07-01T00:00:00.000Z"),
 			highlights: [
 				"Architected full-stack applications with Next.js, React, NestJS, PostgreSQL, and MongoDB.",
-				"Managed multi-region Kubernetes deployments and improved observability with Grafana.",
+				"Ran Kubernetes across 3 regions; cut deploys from hours to minutes and improved observability with Grafana.",
+				// ponytail: figure is owner-claimed; no separate metrics field needed
+				"Reduced cloud costs by 90% with no downtime.",
 				"Led delivery standards for {{platformFocus}}, release pipelines, and platform reliability.",
 			],
 		},
@@ -80,8 +82,8 @@ const CV_TEMPLATE: CvData = {
 			startDate: new Date("2024-06-01T00:00:00.000Z"),
 			endDate: new Date("2026-07-01T00:00:00.000Z"),
 			highlights: [
-				"Owned SIEM and endpoint security operations across cloud and endpoint environments.",
-				"Conducted security audits and implemented operational controls aligned to certification goals.",
+				"Owned SIEM covering 100+ endpoints and 200+ log sources across cloud and endpoint environments.",
+				"Drove operational controls through Cyber Essentials certification.",
 			],
 		},
 		{
@@ -120,8 +122,8 @@ const CV_TEMPLATE: CvData = {
 			startDate: new Date("2022-09-01T00:00:00.000Z"),
 			endDate: new Date("2023-08-01T00:00:00.000Z"),
 			highlights: [
-				"Delivered IoT monitoring and control software for hybrid energy systems.",
-				"Collaborated with hardware teams to integrate telemetry and real-time control paths.",
+				"Delivered IoT monitoring and control for hybrid energy systems across 4,000+ sites.",
+				"Ingested 300,000+ telemetry messages/day; integrated real-time control with hardware teams.",
 			],
 		},
 		{
@@ -130,7 +132,7 @@ const CV_TEMPLATE: CvData = {
 			startDate: new Date("2020-09-01T00:00:00.000Z"),
 			endDate: new Date("2022-10-01T00:00:00.000Z"),
 			highlights: [
-				"Supported network security operations, IDS workflows, and defensive automation.",
+				"Automated IDS/IPS detection auditing with Python workflows, saving ~16 hours/week of manual review.",
 				"Partnered with cross-functional stakeholders on operational security improvements.",
 			],
 		},
