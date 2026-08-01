@@ -55,9 +55,19 @@ const CV_TEMPLATE: CvData = {
 	],
 	experience: [
 		{
+			role: "Lead Software Engineer",
+			company: "Autonative",
+			startDate: new Date("2026-07-01T00:00:00.000Z"),
+			highlights: [
+				"Lead Software Engineer in a growing team building digital platforms for vehicle manufacturers in a direct-to-customer era.",
+				"Shipping production systems across full-stack delivery, cloud infrastructure, and platform reliability.",
+			],
+		},
+		{
 			role: "Lead Software Engineer and DevOps Lead",
 			company: "Propriotec LTD",
 			startDate: new Date("2024-04-01T00:00:00.000Z"),
+			endDate: new Date("2026-07-01T00:00:00.000Z"),
 			highlights: [
 				"Architected full-stack applications with Next.js, React, NestJS, PostgreSQL, and MongoDB.",
 				"Managed multi-region Kubernetes deployments and improved observability with Grafana.",
@@ -68,6 +78,7 @@ const CV_TEMPLATE: CvData = {
 			role: "Cyber Security Analyst",
 			company: "Propriotec LTD",
 			startDate: new Date("2024-06-01T00:00:00.000Z"),
+			endDate: new Date("2026-07-01T00:00:00.000Z"),
 			highlights: [
 				"Owned SIEM and endpoint security operations across cloud and endpoint environments.",
 				"Conducted security audits and implemented operational controls aligned to certification goals.",
@@ -137,7 +148,13 @@ const CV_TEMPLATE: CvData = {
 	skills: [
 		{
 			category: "Frontend",
-			skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+			skills: [
+				"React",
+				"Next.js",
+				"TypeScript",
+				"Tailwind CSS",
+				"Framer Motion",
+			],
 		},
 		{
 			category: "Backend",
@@ -213,7 +230,7 @@ const getDefaultTemplateVariables = (): TemplateVariables => {
 	);
 
 	return {
-		currentTitle: "Lead Software Engineer and DevOps Lead",
+		currentTitle: "Lead Software Engineer",
 		location: "United Kingdom",
 		preferredCloud: "AWS",
 		platformFocus: "scalable digital products",
@@ -222,18 +239,18 @@ const getDefaultTemplateVariables = (): TemplateVariables => {
 };
 
 const renderTemplateString = (value: string, variables: TemplateVariables) =>
-	value.replace(TEMPLATE_VARIABLE_PATTERN, (fullMatch, variableName: string) => {
-		const replacement = variables[variableName];
-		if (replacement === undefined) {
-			return fullMatch;
-		}
-		return String(replacement);
-	});
+	value.replace(
+		TEMPLATE_VARIABLE_PATTERN,
+		(fullMatch, variableName: string) => {
+			const replacement = variables[variableName];
+			if (replacement === undefined) {
+				return fullMatch;
+			}
+			return String(replacement);
+		},
+	);
 
-const renderTemplateValue = <T>(
-	value: T,
-	variables: TemplateVariables,
-): T => {
+const renderTemplateValue = <T>(value: T, variables: TemplateVariables): T => {
 	if (typeof value === "string") {
 		return renderTemplateString(value, variables) as T;
 	}
@@ -257,7 +274,9 @@ const renderTemplateValue = <T>(
 	return value;
 };
 
-export const buildCvData = (variableOverrides: TemplateVariables = {}): CvData => {
+export const buildCvData = (
+	variableOverrides: TemplateVariables = {},
+): CvData => {
 	const templateVariables = {
 		...getDefaultTemplateVariables(),
 		...variableOverrides,

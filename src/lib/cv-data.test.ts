@@ -21,9 +21,15 @@ describe("buildCvData", () => {
 			true,
 		);
 		expect(
-			cv.education.every((qualification) => qualification.startDate instanceof Date),
+			cv.education.every(
+				(qualification) => qualification.startDate instanceof Date,
+			),
 		).toBe(true);
-		expect(cv.experience.some((item) => item.endDate === undefined)).toBe(true);
+		expect(
+			cv.experience.every(
+				(item) => item.endDate === undefined || item.endDate instanceof Date,
+			),
+		).toBe(true);
 		expect(
 			cv.education.some((qualification) => qualification.endDate === undefined),
 		).toBe(true);

@@ -18,7 +18,7 @@ export const siteConfig = {
 	identity: {
 		name: "Thomas Burridge",
 		location: "United Kingdom",
-		role: "Lead engineer by Day, Freelancer by Night",
+		role: "Lead engineer by day, freelancer by night",
 		positioning:
 			"I help founders ship infrastructure-heavy products: SaaS, IoT, multi-tenant systems.",
 	},
@@ -36,11 +36,11 @@ export const siteConfig = {
 	bio: {
 		paragraphs: [
 			"I'm Thomas, a software engineer based in the UK. I've been shipping production software for over six years, mostly on infrastructure-heavy products: SaaS platforms, IoT control systems, and multi-tenant tooling that has to keep running while teams sleep.",
-			"I lead engineering and DevOps at Propriotec, where I architect full-stack applications on Next.js and NestJS, run multi-region Kubernetes, and keep an observability stack that catches issues before they reach customers. I also hold the cybersecurity remit, which means the same systems are designed to be defensible, not just functional.",
-			"Before that I worked across cybersecurity at BT Group, IoT software at Prolectric, and a string of contract engagements as a freelancer. I hold CompTIA CySA+ and was previously GIAC GCIH certified. The throughline: I prefer building things that have to work for real people, on real infrastructure, for a long time.",
+			"I'm a Lead Software Engineer at Autonative, working in a growing engineering team on digital platforms that help vehicle manufacturers compete in a direct-to-customer era. Before that I led engineering and DevOps at a digital products company: full-stack Next.js and NestJS, multi-region Kubernetes, observability, and the cybersecurity remit that keeps those systems defensible as well as functional.",
+			"Earlier I worked across cybersecurity at BT Group, IoT software at Prolectric, and a string of contract engagements as a freelancer. I hold CompTIA CySA+ and was previously GIAC GCIH certified. The throughline: I prefer building things that have to work for real people, on real infrastructure, for a long time.",
 		],
 		roleHighlight:
-			"Currently leading engineering and DevOps at Propriotec. Multi-region Kubernetes, full-stack Next.js and NestJS, observability and security.",
+			"Lead Software Engineer at Autonative in a growing team. Automotive digital platforms, full-stack delivery, and production infrastructure.",
 	},
 
 	featuredWork: [
