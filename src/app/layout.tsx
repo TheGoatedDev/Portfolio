@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import type React from "react";
 
@@ -16,11 +17,26 @@ const geistMono = Geist_Mono({
 	display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
-	subsets: ["latin"],
+// ponytail: local only — next/font/google Source_Serif_4 404s on Vercel turbopack
+const sourceSerif = localFont({
+	src: [
+		{
+			path: "../fonts/source-serif-4/SourceSerif4-Light.woff2",
+			weight: "300",
+			style: "normal",
+		},
+		{
+			path: "../fonts/source-serif-4/SourceSerif4-LightItalic.woff2",
+			weight: "300",
+			style: "italic",
+		},
+		{
+			path: "../fonts/source-serif-4/SourceSerif4-Medium.woff2",
+			weight: "500",
+			style: "normal",
+		},
+	],
 	variable: "--font-source-serif",
-	weight: ["300", "400", "500", "600"],
-	style: ["normal", "italic"],
 	display: "swap",
 });
 
