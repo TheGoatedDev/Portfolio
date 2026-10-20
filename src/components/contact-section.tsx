@@ -8,7 +8,7 @@ import { sendContactMessage } from "@/app/actions/contact";
 import { type ContactState, initialContactState } from "@/lib/contact-types";
 import { siteConfig } from "@/lib/site-config";
 
-export function ContactSection() {
+export function ContactSection({ source }: { source?: "contracting" }) {
 	const [state, formAction] = useActionState(
 		sendContactMessage,
 		initialContactState,
@@ -46,7 +46,7 @@ export function ContactSection() {
 				{state.status === "success" ? (
 					<SuccessNote message={state.message} />
 				) : (
-					<ContactForm formAction={formAction} state={state} />
+					<ContactForm formAction={formAction} state={state} source={source} />
 				)}
 			</div>
 		</section>
@@ -56,9 +56,11 @@ export function ContactSection() {
 function ContactForm({
 	formAction,
 	state,
+	source,
 }: {
 	formAction: (formData: FormData) => void;
 	state: ContactState;
+	source?: "contracting";
 }) {
 	const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 	const previous =
@@ -74,6 +76,7 @@ function ContactForm({
 					strategy="afterInteractive"
 				/>
 			)}
+			{source && <input type="hidden" name="source" value={source} />}
 			<input
 				type="text"
 				name="company"
