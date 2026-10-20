@@ -33,6 +33,7 @@ export async function sendContactMessage(
 	const email = String(formData.get("email") ?? "").trim();
 	const message = String(formData.get("message") ?? "").trim();
 	const honeypot = String(formData.get("company") ?? "").trim();
+	const isContractEnquiry = formData.get("source") === "contracting";
 	const turnstileToken = String(
 		formData.get("cf-turnstile-response") ?? "",
 	).trim();
@@ -155,7 +156,9 @@ export async function sendContactMessage(
 				from: fromAddress,
 				to: [toAddress],
 				reply_to: email,
-				subject: `New message from ${name} via portfolio`,
+				subject: isContractEnquiry
+					? `Contract enquiry from ${name}`
+					: `New message from ${name} via portfolio`,
 				text: [`From: ${name} <${email}>`, "", message].join("\n"),
 			}),
 		});

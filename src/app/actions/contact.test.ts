@@ -148,6 +148,23 @@ describe("sendContactMessage", () => {
 		});
 	});
 
+	it("tags contracting-page enquiries in the subject", async () => {
+		const fetchMock = stubFetch();
+		const { sendContactMessage } = await loadAction();
+
+		await sendContactMessage(
+			{ status: "idle" },
+			buildFormData({ source: "contracting" }),
+		);
+
+		const resendRequest = fetchMock.mock.calls[1]?.[1] as
+			| RequestInit
+			| undefined;
+		expect(JSON.parse(String(resendRequest?.body))).toMatchObject({
+			subject: `Contract enquiry from ${validFields.name}`,
+		});
+	});
+
 	it("rate limits repeated attempts for the same email", async () => {
 		const fetchMock = stubFetch(false);
 		const { sendContactMessage } = await loadAction();

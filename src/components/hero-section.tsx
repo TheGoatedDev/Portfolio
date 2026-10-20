@@ -33,13 +33,23 @@ export function HeroSection() {
 							→
 						</span>
 					</Link>
+					<p className="mt-5 text-sm text-muted-foreground">
+						Hiring on contract?{" "}
+						<Link
+							href="/contracting"
+							className="text-foreground border-b border-foreground/30 hover:text-primary hover:border-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						>
+							How I make sure you never depend on me
+						</Link>
+						.
+					</p>
 				</div>
 			</div>
 		</section>
 	);
 }
 
-function AvailabilityPill({ available }: { available: boolean }) {
+export function AvailabilityPill({ available }: { available: boolean }) {
 	return (
 		<div className="inline-flex items-center gap-2.5 text-xs uppercase tracking-[0.14em] text-muted-foreground">
 			<span className="relative inline-flex h-1.5 w-1.5 items-center justify-center text-foreground">

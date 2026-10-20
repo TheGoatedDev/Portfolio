@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const NAV = [
-	{ name: "Work", href: "#work" },
-	{ name: "About", href: "#about" },
+	{ name: "Work", href: "/#work" },
+	{ name: "Contracting", href: "/contracting" },
+	{ name: "About", href: "/#about" },
+	// both pages render a contact section
 	{ name: "Contact", href: "#contact" },
 ];
 

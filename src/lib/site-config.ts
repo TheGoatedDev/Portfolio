@@ -43,6 +43,96 @@ export const siteConfig = {
 			"Lead Software Engineer at Autonative in a growing team. Automotive digital platforms, full-stack delivery, and production infrastructure.",
 	},
 
+	contracting: {
+		offers: [
+			{
+				id: "build",
+				title: "Build",
+				summary:
+					"A new product or a defined feature, from empty repo to production.",
+				forWho:
+					"Founders with a scoped idea and no engineering team yet, or a team that needs a fixed piece of work done.",
+				youGet:
+					"Working software, deployed in your own accounts, with the tests, CI, and docs the next engineer needs to carry on.",
+				endsWith:
+					"A walkthrough of the codebase and how to ship a change to it.",
+			},
+			{
+				id: "rescue",
+				title: "Rescue",
+				summary:
+					"An audit of an existing codebase, then the work to make it handover-ready.",
+				forWho:
+					"Teams running code nobody fully understands, or whose last contractor left with the knowledge.",
+				youGet:
+					"A plain list of what is risky and why, then the fixes in priority order: docs, tests, CI, and the worst of the tech debt.",
+				endsWith:
+					"A codebase a new hire can open on their first day, and a list of what's left.",
+				testimonial: {
+					quote:
+						"Thomas demonstrated remarkable abilities in managing tech debt and optimizing applications.",
+					name: "Vitor Oliveira",
+					title: "Startup Engineering Leader",
+					context: "Managed Thomas directly, 2023",
+					href: "https://www.linkedin.com/in/thomas-nearlunar/details/recommendations/",
+				},
+			},
+			{
+				id: "infra",
+				title: "Infrastructure",
+				summary: "Environments, deploys, and CI, defined in code.",
+				forWho:
+					"Products that work, but are deployed by hand, by one person, from memory.",
+				youGet:
+					"Infrastructure as code, a CI pipeline, separate staging and production, and written steps for the routine jobs.",
+				endsWith: "Anyone with access can rebuild or redeploy without me.",
+			},
+		],
+		promises: [
+			{
+				title: "You create the accounts.",
+				body: "Repos, cloud, domains, and secrets are in your name from day one. I'm invited in as a guest.",
+			},
+			{
+				title: "The stack is mainstream.",
+				body: "Tools most engineers already know, picked partly because they are easy to hire for. No in-house frameworks.",
+			},
+			{
+				title: "The docs live with the code.",
+				body: "Every repo has a README covering how to run, test, and deploy it. Short decision records explain the non-obvious choices, so nobody has to ask me why.",
+			},
+			{
+				title: "Tests and CI run without me.",
+				body: "Every change is checked automatically on your CI, not on my laptop.",
+			},
+			{
+				title: "Infrastructure is code.",
+				body: "Servers, databases, and environments are defined in files in your repo, and can be rebuilt from them.",
+			},
+			{
+				title: "We do a proper handover.",
+				body: "A live session or recorded walkthrough of the system, and how to change it safely.",
+			},
+			{
+				title: "I remove my own access.",
+				body: "At the end of the engagement I revoke my keys and accounts.",
+			},
+		],
+		terms: [
+			{ label: "Clients", value: "One at a time." },
+			{
+				label: "Hours",
+				value: "Around 20 a week, evenings and weekends, UK time.",
+			},
+			{
+				label: "Where",
+				value: "Remote, worldwide. UK evenings overlap US working hours.",
+			},
+			{ label: "Replies", value: "Within 24 hours." },
+			{ label: "Pricing", value: "Scoped and quoted after a first call." },
+		],
+	},
+
 	featuredWork: [
 		{
 			id: "hetzner-cloud-radar",
