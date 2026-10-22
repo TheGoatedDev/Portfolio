@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 
 import { siteConfig } from "@/lib/site-config";
 
@@ -19,8 +19,9 @@ export function HeroSection() {
 				</p>
 
 				<div className="mt-12">
-					<Link
+					<TrackedLink
 						href="#contact"
+						event="hero_contact_cta_clicked"
 						className="group inline-flex items-baseline gap-2 text-base font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 					>
 						<span className="border-b border-foreground/40 group-hover:border-primary transition-colors">
@@ -32,15 +33,16 @@ export function HeroSection() {
 						>
 							→
 						</span>
-					</Link>
+					</TrackedLink>
 					<p className="mt-5 text-sm text-muted-foreground">
 						Hiring on contract?{" "}
-						<Link
+						<TrackedLink
 							href="/contracting"
+							event="hero_contracting_cta_clicked"
 							className="text-foreground border-b border-foreground/30 hover:text-primary hover:border-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 						>
 							How I make sure you never depend on me
-						</Link>
+						</TrackedLink>
 						.
 					</p>
 				</div>

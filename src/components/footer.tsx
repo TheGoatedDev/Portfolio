@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
@@ -22,10 +26,10 @@ export function Footer() {
 						aria-label="Footer"
 						className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm"
 					>
-						<FooterLink href={social.github} external>
+						<FooterLink href={social.github} external profile="github">
 							GitHub
 						</FooterLink>
-						<FooterLink href={social.linkedin} external>
+						<FooterLink href={social.linkedin} external profile="linkedin">
 							LinkedIn
 						</FooterLink>
 						<FooterLink href="/api/cv/pdf" download>
@@ -42,16 +46,28 @@ function FooterLink({
 	href,
 	external,
 	download,
+	profile,
 	children,
 }: {
 	href: string;
 	external?: boolean;
 	download?: boolean;
+	profile?: "github" | "linkedin";
 	children: React.ReactNode;
 }) {
+	const handleClick = () => {
+		if (profile) {
+			posthog.capture("social_profile_clicked", { profile });
+			return;
+		}
+
+		posthog.capture("cv_download_requested");
+	};
+
 	return (
 		<a
 			href={href}
+			onClick={handleClick}
 			{...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
 			{...(download ? { download: true } : {})}
 			className="text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"

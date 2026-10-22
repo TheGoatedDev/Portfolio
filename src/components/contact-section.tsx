@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import posthog from "posthog-js";
 
 import { sendContactMessage } from "@/app/actions/contact";
 import { type ContactState, initialContactState } from "@/lib/contact-types";
@@ -31,6 +32,11 @@ export function ContactSection({ source }: { source?: "contracting" }) {
 			>
 				<a
 					href={`mailto:${contact.email}`}
+					onClick={() =>
+						posthog.capture("contact_email_clicked", {
+							source: source ?? "portfolio",
+						})
+					}
 					className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 				>
 					{contact.email}
@@ -68,8 +74,15 @@ function ContactForm({
 			? state.values
 			: { name: "", email: "", message: "" };
 
+	const handleSubmit = (formData: FormData) => {
+		posthog.capture("contact_form_submitted", {
+			source: source ?? "portfolio",
+		});
+		formAction(formData);
+	};
+
 	return (
-		<form action={formAction} noValidate className="space-y-6">
+		<form action={handleSubmit} noValidate className="space-y-6">
 			{turnstileSiteKey && (
 				<Script
 					src="https://challenges.cloudflare.com/turnstile/v0/api.js"
