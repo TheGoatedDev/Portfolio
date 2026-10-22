@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { AvailabilityPill } from "@/components/hero-section";
+import { TrackedLink } from "@/components/tracked-link";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -54,8 +53,9 @@ function Intro() {
 			</p>
 
 			<div className="mt-12">
-				<Link
+				<TrackedLink
 					href="#contact"
+					event="contracting_enquiry_cta_clicked"
 					className="group inline-flex items-baseline gap-2 text-base font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 				>
 					<span className="border-b border-foreground/40 group-hover:border-primary transition-colors">
@@ -67,7 +67,7 @@ function Intro() {
 					>
 						→
 					</span>
-				</Link>
+				</TrackedLink>
 			</div>
 		</section>
 	);

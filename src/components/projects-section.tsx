@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import posthog from "posthog-js";
 
 import { type Project, siteConfig } from "@/lib/site-config";
 
@@ -163,19 +166,33 @@ function EntryLinks({
 			className={`flex flex-wrap gap-x-6 gap-y-2 text-sm ${className ?? ""}`}
 		>
 			{project.liveUrl && (
-				<ExternalTextLink href={project.liveUrl} label="Visit" />
+				<ExternalTextLink href={project.liveUrl} label="Visit" projectId={project.id} />
 			)}
 			{project.githubUrl && (
-				<ExternalTextLink href={project.githubUrl} label="Code" />
+				<ExternalTextLink href={project.githubUrl} label="Code" projectId={project.id} />
 			)}
 		</div>
 	);
 }
 
-function ExternalTextLink({ href, label }: { href: string; label: string }) {
+function ExternalTextLink({
+	href,
+	label,
+	projectId,
+}: {
+	href: string;
+	label: "Visit" | "Code";
+	projectId: string;
+}) {
 	return (
 		<a
 			href={href}
+			onClick={() =>
+				posthog.capture("project_link_clicked", {
+					project_id: projectId,
+					link_type: label.toLowerCase(),
+				})
+			}
 			target="_blank"
 			rel="noopener noreferrer"
 			className="group inline-flex items-baseline gap-1.5 text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
